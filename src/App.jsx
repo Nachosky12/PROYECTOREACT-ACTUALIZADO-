@@ -3,24 +3,30 @@ import Header from "./components/header/Header"
 import Boody from "./components/body/Boody"
 import Footer from "./components/footer/Footer"
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import HomePage from './components/Home/Home';
-import AboutPage from './components/About/About';
-import ContactPage from './components/Contact/Contact';
-import ProductsPage from './components/Products/Products';
-import ItemDetail from './components/ItemDetail/ItemDetail';
 
-function App() {
+import Home from "./components/home/Home";
+import About from "./components/about/about";
+import ContactPage from "./components/contact/Contact";
+import Products from "./components/products/Products";
+import ItemDetail from "./components/itemdetail/ItemDetail";
 
-    return (
-       <div>  
+
+function App(){
+    return(
+        <>
+        <BrowserRouter>
             <Header/>
-            <Boody/>
+            <Routes>
+                <Route path="/" element={<Home />} />
+                <Route path='/products' element={<Products />} />
+                <Route path='/products/:productId' element={<ItemDetail />} />
+                <Route path='/about' element={<About />} />
+                <Route path='/contact' element={<ContactPage />} />
+            </Routes>
             <Footer/>
-       </div>
-
+        </BrowserRouter>  
+        </>
     )
-}
+};
 
-export default App  
-
-// </>
+export default App;

@@ -1,7 +1,6 @@
-import ItemList from "../ItemList/ItemList";
+import ItemList from "../itemlist/ItemList"
 
-export default function ProductPage(){
-    
+export default function Products(){    
     return(
         <div className="container mx-auto">
             <ItemList />

@@ -1,11 +1,11 @@
-import Item from "../Item/Item"
-import { getProducts } from "../data/asyncMock"
-import { useEffect, useState } from "react" //Importamos Hookreact useState
+import { useEffect, useState } from "react"; //Importamos Hookreact useState
+import { getProducts } from "../../data/asyncMock.";
+import Item from "../item/Item";
 import Loading from "../loading/Loading"; //Importamos componete Loading
 
 export default function ItemList(){
     const [products, setProducts] = useState([]);
-    const [loading, setLoading] = useState(true);// Declaramos las varieables Loading y setLoading
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         getProducts().then((data) =>{
@@ -14,17 +14,15 @@ export default function ItemList(){
     });
     }, []);
     
-
-
     return(
         <>
             {
                 loading? (
                     <Loading />
                 ):(
-                    <div className="flex flex-warp">
+                    <div className="container mx-auto flex flex-warp pb-[200px]">
                         {products.map((prod) =>(
-                            <Item{...prod} key={prod.id}/>
+                            <Item {...prod} key={prod.id}/>
                         ))} 
                     </div>
                 )
